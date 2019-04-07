@@ -41,10 +41,10 @@ _coroutine_getcontext:
     mov    x9,      sp
     str    x9,      [x0, #0x0F8]
     str    x30,     [x0, #0x100]    // store return address as pc
-    stp    d8, d9,  [x0, #0x150]
-    stp    d10,d11, [x0, #0x160]
-    stp    d12,d13, [x0, #0x170]
-    stp    d14,d15, [x0, #0x180]
+    stp    q8, q9,  [x0, #0x150]
+    stp    q10,q11, [x0, #0x170]
+    stp    q12,q13, [x0, #0x190]
+    stp    q14,q15, [x0, #0x1b0]
     mov    x0, #0                   
     ret
 
@@ -67,10 +67,10 @@ _coroutine_begin:
     mov    x30,   #0;
     ldr    x1,      [x0, #0x0F8]
     mov    sp,x1                  // restore sp
-    ldp    d8, d9,  [x0, #0x150]
-    ldp    d10,d11, [x0, #0x160]
-    ldp    d12,d13, [x0, #0x170]
-    ldp    d14,d15, [x0, #0x180]
+    ldp    q8, q9,  [x0, #0x150]
+    ldp    q10,q11, [x0, #0x170]
+    ldp    q12,q13, [x0, #0x190]
+    ldp    q14,q15, [x0, #0x1b0]
     ldp    x0, x1,  [x0, #0x000]  // restore x0,x1
     ret    x9
 
@@ -88,10 +88,10 @@ _coroutine_setcontext:
     ldr    x30,     [x0, #0x100]  // restore pc into lr
     ldr    x1,      [x0, #0x0F8]
     mov    sp,x1                  // restore sp
-    ldp    d8, d9,  [x0, #0x150]
-    ldp    d10,d11, [x0, #0x160]
-    ldp    d12,d13, [x0, #0x170]
-    ldp    d14,d15, [x0, #0x180]
+    ldp    q8, q9,  [x0, #0x150]
+    ldp    q10,q11, [x0, #0x170]
+    ldp    q12,q13, [x0, #0x190]
+    ldp    q14,q15, [x0, #0x1b0]
     ldp    x0, x1,  [x0, #0x000]  // restore x0,x1
     ret    x30
 
