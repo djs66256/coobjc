@@ -38,7 +38,7 @@ struct coroutine_ucontext_re {
         uint64_t __pc;    // Program counter
         uint64_t padding; // 16-byte align, for cpsr
     } GR;
-    double  VR[2][32];    // float register has max 128-bit
+    double  VR[8][2];    // float register has max 128-bit, q8-q15 must preserve by callee
 };
 
 #elif defined(__ARM_ARCH_7A__) || defined(__ARM_ARCH_7S__)
